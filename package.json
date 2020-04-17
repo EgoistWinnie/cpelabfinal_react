@@ -5,8 +5,12 @@
   "homepage": "https://winnieinyourarea.github.io/cpelabfinal",
   "dependencies": {
     "body-parser": "^1.19.0",
+<<<<<<< HEAD
     "bootstrap": "3.3.7",
     "bulma": "^0.8.2",
+=======
+    "bootstrap": "3.4.1",
+>>>>>>> 0c8836300638928af0abb5a9cf93060ecb43be64
     "chartist": "0.10.1",
     "express": "^4.17.1",
     "gh-pages": "^2.2.0",
