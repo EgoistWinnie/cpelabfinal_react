@@ -29,7 +29,7 @@ import routes from "routes.js";
 
 import image from "assets/img/sidebar-4.jpg";
 
-import Login from "./Login.jsx"
+//import Login from "./Login.jsx"
 
 class Admin extends Component {
   constructor(props) {
