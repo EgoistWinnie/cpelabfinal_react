@@ -1,4 +1,4 @@
-import React, { Component,useState } from "react";
+import React, { Component } from "react";
 import { Grid, Row, Col, Form, Button } from "react-bootstrap";
 
 class Login extends Component {
@@ -12,8 +12,6 @@ class Login extends Component {
       };
       
     }
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
   
     // handleAuthState = authState => {
     //   if (this.state.isLogin === true) {
