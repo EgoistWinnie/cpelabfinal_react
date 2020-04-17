@@ -81,7 +81,7 @@ class Admin extends Component {
   };
   getRoutes = routes => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/cpelabfinal_react") {
+      if (prop.layout === "/admin") {
         return (
           <Route
             path={prop.layout + prop.path}
