@@ -29,6 +29,8 @@ import routes from "routes.js";
 
 import image from "assets/img/sidebar-4.jpg";
 
+import Login from "./Login.jsx"
+
 class Admin extends Component {
   constructor(props) {
     super(props);
@@ -37,7 +39,13 @@ class Admin extends Component {
       image: image,
       color: "black",
       hasImage: true,
-      fixedClasses: "dropdown show-dropdown open"
+      fixedClasses: "dropdown show-dropdown open",
+      isLoading: true,
+      events: [],
+      users: [],
+      token: "",
+      currentUser: null,
+      error: null
     };
   }
   handleNotificationClick = position => {
@@ -73,7 +81,7 @@ class Admin extends Component {
   };
   getRoutes = routes => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
+      if (prop.layout === "/cpelabfinal_react") {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -119,6 +127,26 @@ class Admin extends Component {
       this.setState({ fixedClasses: "dropdown" });
     }
   };
+  // fetchUser() {
+  //   const token = localStorage.getItem('token');
+  //   const bearer = 'Bearer ' + this.state.token;
+  //   console.log(bearer)
+  //   fetch(`http://localhost:5000/api/v3/users/me`, {
+  //     method: 'GET',
+  //     withCredentials: true,
+  //     credentials: 'include',
+  //     headers: {
+  //       'Authorization': bearer
+  //     }
+  //   }).then(response => response.json())
+  //   .then(data =>
+  //     this.setState({
+  //       currentUser: data._id,
+  //       isLoading: false,
+  //     })
+  //   )
+  //   .catch(error => this.setState({ error, isLoading: false }));
+  // }
   componentDidMount() {
     this.setState({ _notificationSystem: this.refs.notificationSystem });
     var _notificationSystem = this.refs.notificationSystem;
@@ -167,6 +195,8 @@ class Admin extends Component {
     }
   }
   render() {
+    //const currentUser = this.state.currentUser
+    //if(currentUser){
     return (
       <div className="wrapper">
         <NotificationSystem ref="notificationSystem" style={style} />
@@ -182,8 +212,15 @@ class Admin extends Component {
           <Footer />
         </div>
       </div>
-    );
-  }
+    );}
+
+  //   return (
+  //     <div className="wrapper">
+  //       <NotificationSystem ref="notificationSystem" style={style} />
+  //         <Login />
+  //     </div>
+  //   )
+  // }
 }
 
 export default Admin;

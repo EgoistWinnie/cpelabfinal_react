@@ -266,7 +266,7 @@ var style = {
 // // // For tables
 // //
 //
-const thArray = ["No", "Event", "Schedule", "author", "City"];
+const thArray = ["Scheduled on", "Event", "Details"];
 
 //
 // //

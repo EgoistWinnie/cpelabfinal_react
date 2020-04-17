@@ -13,8 +13,8 @@ function App() {
   return (
     <BrowserRouter>
     <Switch>
-      <Route path="/admin" render={props => <AdminLayout {...props} />} />
-      <Redirect from="/" to="/admin/dashboard" />
+      <Route path="/cpelabfinal_react" render={props => <AdminLayout {...props} />} />
+      <Redirect from="/" to="/cpelabfinal_react/dashboard" />
     </Switch>
   </BrowserRouter>
   );

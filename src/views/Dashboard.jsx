@@ -23,14 +23,39 @@ import { StatsCard } from "components/StatsCard/StatsCard.jsx";
 import { thArray } from "variables/Variables.jsx";
 
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      isLoading: true,
+      item: []
+    };
+  }
+
+  fetchAllEvents() {
+    fetch(`http://localhost:5000/api/v3/events`)
+      .then(response => response.json())
+      .then(data =>
+        this.setState({
+          item: data.event,
+          isLoading: false,
+        })
+      )
+      .catch(error => this.setState({ error, isLoading: false }));
+  }
+  componentDidMount(){
+    this.fetchAllEvents();
+  }
   render() {
+    const event = this.state.item;
+    const eventcount = Object.keys(event).length;
     return (
       <div className="content">
         <Grid fluid>
         <Row>
             <Col lg={6} sm={6}>
               <StatsCard
-                bigIcon={<i className="pe-7s-server text-warning" />}
+                bigIcon={<i className="pe-7s-graph text-warning" />}
                 statsText="Members"
                 statsValue="0"
                 statsIcon={<i className="fa fa-refresh" />}
@@ -41,7 +66,7 @@ class Dashboard extends Component {
               <StatsCard
                 bigIcon={<i className="pe-7s-graph1 text-danger" />}
                 statsText="Events ongoing"
-                statsValue="23"
+                statsValue={eventcount}
                 statsIcon={<i className="fa fa-clock-o" />}
                 statsIconText="In the last hour"
               />
@@ -65,15 +90,13 @@ class Dashboard extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {/* {tdArray.map((prop, key) => {
-                        return (
-                          <tr key={key}>
-                            {prop.map((prop, key) => {
-                              return <td key={key}>{prop}</td>;
-                            })}
-                          </tr>
-                        );
-                      })} */}
+                    {event.map((event) => {
+                          return <tr key={event._id}>
+                                  <td>{event.date}</td>
+                                  <td>{event.name}</td>
+                                  <td>{event.details}</td>
+                                  </tr>
+                        })}
                     </tbody>
                   </Table>
                 }
